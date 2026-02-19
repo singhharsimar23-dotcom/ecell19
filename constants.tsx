@@ -252,6 +252,7 @@ export interface BlogPost {
     avatar: string;
   };
   content: React.ReactNode;
+  layout?: 'image-first' | 'text-first';
 }
 
 export const BLOG_CATEGORIES = [

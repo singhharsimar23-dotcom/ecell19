@@ -218,7 +218,7 @@ const Dashboard: React.FC<DashboardProps> = memo(({
   // Blogs
   const openAddBlog = () => {
     setEditingBlog(null);
-    setBlogForm({ title: '', category: 'ALL', authorName: '', image: '', content: '' });
+    setBlogForm({ title: '', category: 'ALL', authorName: '', image: '', content: '', layout: 'image-first' });
     setIsBlogModalOpen(true);
   };
 
@@ -375,16 +375,6 @@ const Dashboard: React.FC<DashboardProps> = memo(({
         </div>
       </div>
 
-      {/* Desktop: Global Exit Button */}
-      <button
-        onClick={onClose}
-        className="hidden md:flex fixed top-8 right-8 z-[130] w-14 h-14 bg-black/60 hover:bg-red-500/20 text-white/60 hover:text-white rounded-full items-center justify-center transition-all backdrop-blur-xl border border-white/10 shadow-2xl group"
-        title="Exit Dashboard"
-      >
-        <svg className="w-6 h-6 group-hover:rotate-90 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-        </svg>
-      </button>
 
       {/* Sidebar Backdrop - Mobile only */}
       <div
@@ -760,6 +750,27 @@ const Dashboard: React.FC<DashboardProps> = memo(({
               onChange={e => setBlogForm(prev => ({ ...prev, content: e.target.value }))}
             />
             <p className="text-xs text-white/20 italic">* Rich text editing is simplified for this admin panel demo.</p>
+          </div>
+          <div className="space-y-2">
+            <label className="text-[10px] font-black text-[#76ABB8] uppercase tracking-[0.2em] ml-1">Card Layout</label>
+            <div className="grid grid-cols-2 gap-4">
+              <button
+                onClick={() => setBlogForm(prev => ({ ...prev, layout: 'image-first' }))}
+                className={`p-4 rounded-xl border ${blogForm.layout === 'image-first' ? 'border-[#76ABB8] bg-[#76ABB8]/10' : 'border-white/10 bg-[#1A1A1A]'} transition-all`}
+              >
+                <div className="h-8 bg-white/20 mb-2 rounded"></div>
+                <div className="h-2 w-2/3 bg-white/10 rounded"></div>
+                <span className="text-[10px] uppercase font-bold text-white mt-2 block">Image Top</span>
+              </button>
+              <button
+                onClick={() => setBlogForm(prev => ({ ...prev, layout: 'text-first' }))}
+                className={`p-4 rounded-xl border ${blogForm.layout === 'text-first' ? 'border-[#76ABB8] bg-[#76ABB8]/10' : 'border-white/10 bg-[#1A1A1A]'} transition-all`}
+              >
+                <div className="h-2 w-2/3 bg-white/10 rounded mb-2"></div>
+                <div className="h-8 bg-white/20 rounded"></div>
+                <span className="text-[10px] uppercase font-bold text-white mt-2 block">Text Top</span>
+              </button>
+            </div>
           </div>
           <button onClick={saveBlog} className="w-full bg-[#76ABB8] hover:bg-[#8ec2cf] text-white py-4 rounded-xl font-black uppercase tracking-widest mt-4 transition-all">
             {editingBlog ? 'Update Article' : 'Publish Article'}

@@ -1,238 +1,178 @@
 /**
- * API Hooks - Backend Integration Points
- * ======================================
- * These placeholder functions/hooks are where the Backend Developer
- * should plug in their API calls. Replace the mock implementations
- * with actual fetch/axios calls to your backend.
- *
- * Base URL: Use import.meta.env.VITE_API_URL (set in .env)
- * Example: const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
+ * E-CELL VIT BHOPAL - API INTEGRATION CONTRACT (v1.0)
+ * ===================================================
+ * 
+ * TO THE BACKEND DEVELOPER:
+ * This file serves as the single source of truth for the frontend-backend connection.
+ * Replace the empty implementations below with your fetch/axios logic.
+ * 
+ * AUTHENTICATION:
+ * All 'protected' routes (Dashboard operations) should expect a Bearer Token.
+ * 
+ * DATA SEEDING:
+ * If these functions return an empty array [], the app will fall back to using 
+ * the static data in `constants.tsx`.
  */
 
 import type { TeamMember, EventItem, BlogPost, Sponsor, SpeakerItem } from '../constants';
 
-// ---------------------------------------------------------------------------
-// CONFIG: Backend Developer - Set your API base URL in .env
-// ---------------------------------------------------------------------------
-const getApiBase = (): string => {
-  return import.meta.env.VITE_API_URL || '';
-};
+const getApiBase = (): string => import.meta.env.VITE_API_URL || '';
 
 // ---------------------------------------------------------------------------
-// TEAM MEMBERS API
-// Used by: MeetOurTeam, TeamsExplorer, Dashboard
+// 1. TEAM MANAGEMENT
 // ---------------------------------------------------------------------------
 
 /**
- * Fetch all team members from API.
- * Replace with: GET /api/team or GET /api/members
+ * GET /api/team
+ * Response: Array<TeamMember>
  */
 export async function fetchTeamMembers(): Promise<TeamMember[]> {
-  // TODO: Backend - Replace with actual API call
   // const res = await fetch(`${getApiBase()}/api/team`);
-  // if (!res.ok) throw new Error('Failed to fetch team');
-  // return res.json();
-  return []; // Placeholder - app uses constants.tsx data when empty
+  // return res.ok ? res.json() : [];
+  return [];
 }
 
 /**
- * Create a new team member.
- * Replace with: POST /api/team
+ * POST /api/team
+ * Request Body: { name: string, role: string, category: string, image: string, linkedin: string }
  */
 export async function createTeamMember(member: Omit<TeamMember, 'id'>): Promise<TeamMember> {
-  // TODO: Backend - Replace with actual API call
-  // const res = await fetch(`${getApiBase()}/api/team`, {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify(member),
-  // });
-  // return res.json();
-  throw new Error('API not connected - Backend developer: implement POST /api/team');
+  throw new Error('Endpoint POST /api/team not implemented');
 }
 
 /**
- * Update an existing team member.
- * Replace with: PUT /api/team/:id or PATCH /api/team/:id
+ * PUT /api/team/:id
  */
 export async function updateTeamMember(id: string, member: Partial<TeamMember>): Promise<TeamMember> {
-  // TODO: Backend - Replace with actual API call
-  // const res = await fetch(`${getApiBase()}/api/team/${id}`, {
-  //   method: 'PUT',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify(member),
-  // });
-  // return res.json();
-  throw new Error('API not connected - Backend developer: implement PUT /api/team/:id');
+  throw new Error(`Endpoint PUT /api/team/${id} not implemented`);
 }
 
 /**
- * Delete a team member.
- * Replace with: DELETE /api/team/:id
+ * DELETE /api/team/:id
  */
 export async function deleteTeamMember(id: string): Promise<void> {
-  // TODO: Backend - Replace with actual API call
-  // await fetch(`${getApiBase()}/api/team/${id}`, { method: 'DELETE' });
-  throw new Error('API not connected - Backend developer: implement DELETE /api/team/:id');
+  throw new Error(`Endpoint DELETE /api/team/${id} not implemented`);
 }
 
 // ---------------------------------------------------------------------------
-// EVENTS API
-// Used by: OurEvents, Dashboard
+// 2. EVENTS (Landing Page & Dashboard)
 // ---------------------------------------------------------------------------
 
 /**
- * Fetch all events from API.
- * Replace with: GET /api/events
+ * GET /api/events
+ * Response: Array<EventItem>
  */
 export async function fetchEvents(): Promise<EventItem[]> {
-  // TODO: Backend - Replace with actual API call
-  // const res = await fetch(`${getApiBase()}/api/events`);
-  // return res.json();
   return [];
 }
 
 /**
- * Create a new event.
- * Replace with: POST /api/events
+ * POST /api/events
+ * Request Body: { title: string, description: string, image: string, layout: 'image-first' | 'text-first' }
  */
 export async function createEvent(event: Omit<EventItem, 'id'>): Promise<EventItem> {
-  // TODO: Backend - Replace with actual API call
-  throw new Error('API not connected - Backend developer: implement POST /api/events');
+  throw new Error('Endpoint POST /api/events not implemented');
 }
 
 /**
- * Update an event.
- * Replace with: PUT /api/events/:id
+ * PUT /api/events/:id
  */
 export async function updateEvent(id: string, event: Partial<EventItem>): Promise<EventItem> {
-  // TODO: Backend - Replace with actual API call
-  throw new Error('API not connected - Backend developer: implement PUT /api/events/:id');
+  throw new Error(`Endpoint PUT /api/events/${id} not implemented`);
 }
 
 /**
- * Delete an event.
- * Replace with: DELETE /api/events/:id
+ * DELETE /api/events/:id
  */
 export async function deleteEvent(id: string): Promise<void> {
-  // TODO: Backend - Replace with actual API call
-  throw new Error('API not connected - Backend developer: implement DELETE /api/events/:id');
+  throw new Error(`Endpoint DELETE /api/events/${id} not implemented`);
 }
 
 // ---------------------------------------------------------------------------
-// BLOGS API
-// Used by: LandingBlogs, BlogsExplorer, Dashboard
+// 3. BLOGS (Editorial Section)
 // ---------------------------------------------------------------------------
 
 /**
- * Fetch all blog posts from API.
- * Replace with: GET /api/blogs
+ * GET /api/blogs
+ * Response: Array<BlogPost>
  */
 export async function fetchBlogs(): Promise<BlogPost[]> {
-  // TODO: Backend - Replace with actual API call
   return [];
 }
 
 /**
- * Fetch a single blog post by ID.
- * Replace with: GET /api/blogs/:id
+ * GET /api/blogs/:id
  */
 export async function fetchBlogById(id: string): Promise<BlogPost | null> {
-  // TODO: Backend - Replace with actual API call
   return null;
 }
 
 /**
- * Create a new blog post.
- * Replace with: POST /api/blogs
+ * POST /api/blogs
+ * Request Body: { title: string, category: string, date: string, readTime: string, snippet: string, image: string, author: { name, role, avatar }, content: string/html, layout: 'image-first' | 'text-first' }
  */
 export async function createBlog(blog: Omit<BlogPost, 'id'>): Promise<BlogPost> {
-  // TODO: Backend - Replace with actual API call
-  throw new Error('API not connected - Backend developer: implement POST /api/blogs');
+  throw new Error('Endpoint POST /api/blogs not implemented');
 }
 
 /**
- * Update a blog post.
- * Replace with: PUT /api/blogs/:id
+ * PUT /api/blogs/:id
  */
 export async function updateBlog(id: string, blog: Partial<BlogPost>): Promise<BlogPost> {
-  // TODO: Backend - Replace with actual API call
-  throw new Error('API not connected - Backend developer: implement PUT /api/blogs/:id');
+  throw new Error(`Endpoint PUT /api/blogs/${id} not implemented`);
 }
 
 /**
- * Delete a blog post.
- * Replace with: DELETE /api/blogs/:id
+ * DELETE /api/blogs/:id
  */
 export async function deleteBlog(id: string): Promise<void> {
-  // TODO: Backend - Replace with actual API call
-  throw new Error('API not connected - Backend developer: implement DELETE /api/blogs/:id');
+  throw new Error(`Endpoint DELETE /api/blogs/${id} not implemented`);
 }
 
 // ---------------------------------------------------------------------------
-// SPONSORS API
-// Used by: Sponsors
+// 4. SPONSORS & SPEAKERS (Static/Dynamic Lists)
 // ---------------------------------------------------------------------------
 
 /**
- * Fetch all sponsors from API.
- * Replace with: GET /api/sponsors
+ * GET /api/sponsors
  */
 export async function fetchSponsors(): Promise<Sponsor[]> {
-  // TODO: Backend - Replace with actual API call
   return [];
 }
 
-// ---------------------------------------------------------------------------
-// SPEAKERS API
-// Used by: PastSpeakers
-// ---------------------------------------------------------------------------
-
 /**
- * Fetch all past speakers from API.
- * Replace with: GET /api/speakers
+ * GET /api/speakers
  */
 export async function fetchSpeakers(): Promise<SpeakerItem[]> {
-  // TODO: Backend - Replace with actual API call
   return [];
 }
 
 // ---------------------------------------------------------------------------
-// AUTH API
-// Used by: AuthPage
+// 5. AUTHENTICATION (Admin Console)
 // ---------------------------------------------------------------------------
 
 /**
- * Login - Submit credentials to backend.
- * Replace with: POST /api/auth/login
+ * POST /api/auth/login
+ * Body: { email, password }
  */
 export async function login(email: string, password: string): Promise<{ token: string; user: object }> {
-  // TODO: Backend - Replace with actual API call
-  // const res = await fetch(`${getApiBase()}/api/auth/login`, {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify({ email, password }),
-  // });
-  // return res.json();
-  throw new Error('API not connected - Backend developer: implement POST /api/auth/login');
+  throw new Error('Endpoint POST /api/auth/login not implemented');
 }
 
 /**
- * Register - Create new account.
- * Replace with: POST /api/auth/register
+ * POST /api/auth/register
  */
 export async function register(name: string, email: string, password: string): Promise<{ token: string; user: object }> {
-  // TODO: Backend - Replace with actual API call
-  throw new Error('API not connected - Backend developer: implement POST /api/auth/register');
+  throw new Error('Endpoint POST /api/auth/register not implemented');
 }
 
 // ---------------------------------------------------------------------------
-// CONTACT FORM API
-// Used by: ContactUs
+// 6. CONTACT FORM
 // ---------------------------------------------------------------------------
 
 /**
- * Submit contact form.
- * Replace with: POST /api/contact
+ * POST /api/contact
+ * Body: { name, email, phone, message }
  */
 export async function submitContactForm(data: {
   name: string;
@@ -240,13 +180,6 @@ export async function submitContactForm(data: {
   phone: string;
   message: string;
 }): Promise<{ success: boolean }> {
-  // TODO: Backend - Replace with actual API call
-  // const res = await fetch(`${getApiBase()}/api/contact`, {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify(data),
-  // });
-  // return res.json();
-  throw new Error('API not connected - Backend developer: implement POST /api/contact');
+  throw new Error('Endpoint POST /api/contact not implemented');
 }
 
