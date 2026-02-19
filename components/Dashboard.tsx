@@ -25,11 +25,23 @@ const ImageUpload: React.FC<{
 }> = memo(({ currentImage, onImageChange, label }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileSelect = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       const file = e.target.files[0];
-      const imageUrl = URL.createObjectURL(file);
-      onImageChange(imageUrl);
+
+      // 1. Show local preview immediatey for UX
+      const localUrl = URL.createObjectURL(file);
+      onImageChange(localUrl);
+
+      // 2. Trigger background upload to server
+      try {
+        const { uploadImage } = await import('../api/useApi');
+        const remoteUrl = await uploadImage(file);
+        onImageChange(remoteUrl);
+      } catch (error) {
+        console.error("Upload failed, keeping local preview:", error);
+        // Note: In production, you might want to show a toast/alert here
+      }
     }
   };
 

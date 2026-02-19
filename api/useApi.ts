@@ -19,7 +19,29 @@ import type { TeamMember, EventItem, BlogPost, Sponsor, SpeakerItem } from '../c
 const getApiBase = (): string => import.meta.env.VITE_API_URL || '';
 
 // ---------------------------------------------------------------------------
-// 1. TEAM MANAGEMENT
+// 1. IMAGE UPLOADS
+// ---------------------------------------------------------------------------
+
+/**
+ * POST /api/upload
+ * Headers: { 'Content-Type': 'multipart/form-data' }
+ * Body: FormData { file: Blob }
+ * Response: { url: string }
+ */
+export async function uploadImage(file: File): Promise<string> {
+  // const formData = new FormData();
+  // formData.append('file', file);
+  // const res = await fetch(`${getApiBase()}/api/upload`, {
+  //   method: 'POST',
+  //   body: formData,
+  // });
+  // const data = await res.json();
+  // return data.url;
+  throw new Error('Endpoint POST /api/upload not implemented');
+}
+
+// ---------------------------------------------------------------------------
+// 2. TEAM MANAGEMENT (Dashboard)
 // ---------------------------------------------------------------------------
 
 /**
@@ -27,14 +49,11 @@ const getApiBase = (): string => import.meta.env.VITE_API_URL || '';
  * Response: Array<TeamMember>
  */
 export async function fetchTeamMembers(): Promise<TeamMember[]> {
-  // const res = await fetch(`${getApiBase()}/api/team`);
-  // return res.ok ? res.json() : [];
   return [];
 }
 
 /**
  * POST /api/team
- * Request Body: { name: string, role: string, category: string, image: string, linkedin: string }
  */
 export async function createTeamMember(member: Omit<TeamMember, 'id'>): Promise<TeamMember> {
   throw new Error('Endpoint POST /api/team not implemented');
@@ -55,12 +74,11 @@ export async function deleteTeamMember(id: string): Promise<void> {
 }
 
 // ---------------------------------------------------------------------------
-// 2. EVENTS (Landing Page & Dashboard)
+// 3. EVENTS (Dashboard)
 // ---------------------------------------------------------------------------
 
 /**
  * GET /api/events
- * Response: Array<EventItem>
  */
 export async function fetchEvents(): Promise<EventItem[]> {
   return [];
@@ -68,7 +86,6 @@ export async function fetchEvents(): Promise<EventItem[]> {
 
 /**
  * POST /api/events
- * Request Body: { title: string, description: string, image: string, layout: 'image-first' | 'text-first' }
  */
 export async function createEvent(event: Omit<EventItem, 'id'>): Promise<EventItem> {
   throw new Error('Endpoint POST /api/events not implemented');
@@ -89,27 +106,18 @@ export async function deleteEvent(id: string): Promise<void> {
 }
 
 // ---------------------------------------------------------------------------
-// 3. BLOGS (Editorial Section)
+// 4. BLOGS (Dashboard)
 // ---------------------------------------------------------------------------
 
 /**
  * GET /api/blogs
- * Response: Array<BlogPost>
  */
 export async function fetchBlogs(): Promise<BlogPost[]> {
   return [];
 }
 
 /**
- * GET /api/blogs/:id
- */
-export async function fetchBlogById(id: string): Promise<BlogPost | null> {
-  return null;
-}
-
-/**
  * POST /api/blogs
- * Request Body: { title: string, category: string, date: string, readTime: string, snippet: string, image: string, author: { name, role, avatar }, content: string/html, layout: 'image-first' | 'text-first' }
  */
 export async function createBlog(blog: Omit<BlogPost, 'id'>): Promise<BlogPost> {
   throw new Error('Endpoint POST /api/blogs not implemented');
@@ -130,44 +138,7 @@ export async function deleteBlog(id: string): Promise<void> {
 }
 
 // ---------------------------------------------------------------------------
-// 4. SPONSORS & SPEAKERS (Static/Dynamic Lists)
-// ---------------------------------------------------------------------------
-
-/**
- * GET /api/sponsors
- */
-export async function fetchSponsors(): Promise<Sponsor[]> {
-  return [];
-}
-
-/**
- * GET /api/speakers
- */
-export async function fetchSpeakers(): Promise<SpeakerItem[]> {
-  return [];
-}
-
-// ---------------------------------------------------------------------------
-// 5. AUTHENTICATION (Admin Console)
-// ---------------------------------------------------------------------------
-
-/**
- * POST /api/auth/login
- * Body: { email, password }
- */
-export async function login(email: string, password: string): Promise<{ token: string; user: object }> {
-  throw new Error('Endpoint POST /api/auth/login not implemented');
-}
-
-/**
- * POST /api/auth/register
- */
-export async function register(name: string, email: string, password: string): Promise<{ token: string; user: object }> {
-  throw new Error('Endpoint POST /api/auth/register not implemented');
-}
-
-// ---------------------------------------------------------------------------
-// 6. CONTACT FORM
+// 5. CONTACT FORM
 // ---------------------------------------------------------------------------
 
 /**

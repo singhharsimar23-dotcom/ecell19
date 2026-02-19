@@ -30,7 +30,10 @@ const Hero: React.FC = memo(() => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6">
-            <button className="bg-[#76ABB8] hover:bg-[#8ec2cf] text-[#02142C] px-12 py-5 rounded-full text-base sm:text-lg font-black uppercase tracking-widest transition-all shadow-2xl hover:scale-105 active:scale-95 touch-manipulation">
+            <button
+              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-[#76ABB8] hover:bg-[#8ec2cf] text-[#02142C] px-12 py-5 rounded-full text-base sm:text-lg font-black uppercase tracking-widest transition-all shadow-2xl hover:scale-105 active:scale-95 touch-manipulation"
+            >
               Know More
             </button>
           </div>
