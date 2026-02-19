@@ -661,10 +661,10 @@ textarea {
   will-change: transform;
 }
 
-.pause-on-hover:hover .animate-marquee,
+/* .pause-on-hover:hover .animate-marquee,
 .pause-on-hover:hover .animate-marquee-reverse {
   animation-play-state: paused;
-}
+} */
 
 .animate-pulse-slow {
   animation: pulse-slow 12s cubic-bezier(0.4, 0, 0.2, 1) infinite;

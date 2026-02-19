@@ -6,7 +6,7 @@ const EventCard: React.FC<{ event: EventItem }> = memo(({ event }) => {
   const isImageFirst = event.layout === 'image-first';
 
   return (
-    <div className="flex-shrink-0 w-[85vw] max-w-[450px] sm:w-[400px] md:w-[450px] min-h-[500px] sm:h-[600px] md:h-[650px] mx-3 sm:mx-4 md:mx-6 bg-[#1a1a1a] border border-white/5 rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem] p-6 sm:p-8 md:p-10 flex flex-col overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-white/10 hover:bg-[#222]">
+    <div className="flex-shrink-0 w-[80vw] max-w-[380px] sm:w-[340px] md:w-[380px] min-h-[420px] sm:h-[520px] md:h-[550px] mx-3 sm:mx-4 md:mx-6 bg-[#1a1a1a] border border-white/5 rounded-[1.8rem] sm:rounded-[2.2rem] md:rounded-[2.5rem] p-5 sm:p-7 md:p-8 flex flex-col overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-white/10 hover:bg-[#222]">
       {isImageFirst ? (
         <>
           {/* Image Section */}
@@ -59,22 +59,46 @@ interface OurEventsProps {
 }
 
 const OurEvents: React.FC<OurEventsProps> = memo(({ events }) => {
+  const [isPaused, setIsPaused] = React.useState(false);
+  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = () => {
+    timeoutRef.current = setTimeout(() => {
+      setIsPaused(true);
+    }, 2000); // 2 second delay
+  };
+
+  const handleMouseLeave = () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    setIsPaused(false);
+  };
+
   return (
-    <section id="gallery" className="py-32 bg-black overflow-hidden relative scroll-mt-32">
+    <section id="gallery" className="py-24 bg-black overflow-hidden relative scroll-mt-32">
       {/* Decorative text watermark background */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-black text-white/[0.02] pointer-events-none select-none uppercase">
         Events
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 sm:mb-16 md:mb-20 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 sm:mb-14 md:mb-16 relative z-10">
         <h2 className="text-center text-fluid-4xl md:text-fluid-8xl font-black text-[#76ABB8] uppercase tracking-[-0.05em] leading-tight">
           OUR EVENTS
         </h2>
       </div>
 
-      <div className="relative w-full z-10 pause-on-hover">
+      <div
+        className="relative w-full z-10"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
         {/* Infinite Scroll Container - Standardized with -50% logic */}
-        <div className="flex animate-marquee py-6 sm:py-8 md:py-10" style={{ '--duration': '60s' } as React.CSSProperties}>
+        <div
+          className="flex animate-marquee py-5 sm:py-6 md:py-8"
+          style={{
+            '--duration': '60s',
+            animationPlayState: isPaused ? 'paused' : 'running'
+          } as React.CSSProperties}
+        >
           {events.map((event, index) => (
             <EventCard key={`a-${event.id}-${index}`} event={event} />
           ))}
