@@ -51,21 +51,21 @@ export const EVENTS: EventItem[] = [
     id: 'e-summit-25',
     title: 'E-Summit 25',
     description: 'E-Summit 2025 by E-Cell VIT Bhopal is a premier entrepreneurial event bringing together innovators, investors, and industry leaders for insightful talks, workshops, networking, and pitch competitions. Focused on emerging technologies and startup growth, it offers a platform to learn, connect, and explore funding opportunities.',
-    image: 'https://images.unsplash.com/photo-1540575861501-7ad05823c9f5?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://www.ecellvitbhopal.in/static/media/6.36064fd48724ccc841f0.png',
     layout: 'image-first',
   },
   {
     id: 'e-summit-24',
     title: 'E-Summit 24',
     description: "E-Summit '24 by E-Cell was a landmark event celebrating innovation, entrepreneurship, and strategic thinking. Highlights included a legendary speaker session with Vijender Singh Chauhan, a Paper Trading Competition, an IPL Auction challenge, a dynamic Case Study Competition, and a Product Design Competition powered by Notion.",
-    image: 'https://images.unsplash.com/photo-1591115765373-520b7a6f72d7?q=80&w=2070&auto=format&fit=crop',
+    image: 'https://www.ecellvitbhopal.in/static/media/1.5a72a630f37ac19dde12.png',
     layout: 'text-first',
   },
   {
     id: 'parichay-24',
     title: 'Parichay 24',
     description: 'Parichay 24 by E-Cell VIT Bhopal brought together entrepreneurial leaders who shared their inspiring journeys and expertise. Highlights included Mitresh Sharma, Founder of First Bud Organics, and Srijan Mehrotra, Founder of Model Verse, both Shark Tank India alumni.',
-    image: 'https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=2000&auto=format&fit=crop',
+    image: 'https://www.ecellvitbhopal.in/static/media/2.b3e74312119398d946c5.png',
     layout: 'image-first',
   },
   {
@@ -79,7 +79,7 @@ export const EVENTS: EventItem[] = [
     id: 'prachar',
     title: 'Prachar',
     description: 'Prachar 2022, hosted by E-Cell VIT Bhopal, was an insightful and engaging event centered on creative marketing, featuring interactive quizzes, stand-up acts, and expert discussions.',
-    image: 'https://images.unsplash.com/photo-1551818255-e6e10975bc17?q=80&w=2025&auto=format&fit=crop',
+    image: 'https://www.ecellvitbhopal.in/static/media/4.10e44c87dd2205811bd4.png',
     layout: 'image-first',
   },
   {
@@ -202,8 +202,8 @@ export const TEAM: TeamMember[] = [
 ];
 
 export const SUB_TEAMS = [
-  'Board Members', 'Tech Team', 'Design Team', 
-  'Social Media Team', 'Events Team', 'Content Team', 
+  'Board Members', 'Tech Team', 'Design Team',
+  'Social Media Team', 'Events Team', 'Content Team',
   'Corporate Team', 'Finance Team', 'Operations Team'
 ];
 
@@ -268,36 +268,36 @@ export const BLOG_POSTS: BlogPost[] = [
     snippet: "When you think of the companies that define India's digital economy, brands like Zomato and PolicyBazaar immediately come to mind...",
     image: 'https://media.glassdoor.com/l/34825/info-edge-india-office.jpg',
     author: {
-        name: "Srijan Mehrotra",
-        role: "AI Lead & Tech Analyst",
-        avatar: "https://media.licdn.com/dms/image/v2/D4D03AQGsK4G3P5f_6g/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1715494294025?e=1746057600&v=beta&t=xH3yE5KxYvD_pE_I4-z1Y-f_I3J_f_I3J_f_I3J_f_I3J"
+      name: "Srijan Mehrotra",
+      role: "AI Lead & Tech Analyst",
+      avatar: "https://media.licdn.com/dms/image/v2/D4D03AQGsK4G3P5f_6g/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1715494294025?e=1746057600&v=beta&t=xH3yE5KxYvD_pE_I4-z1Y-f_I3J_f_I3J_f_I3J_f_I3J"
     },
     content: (
-        <div className="space-y-8">
-            <p className="text-xl leading-relaxed text-white/90">
-                When you think of the companies that define India's digital economy, brands like Zomato and PolicyBazaar immediately come to mind. But behind these household names lies a quieter, more strategic force: <strong>Info Edge (India) Limited</strong>.
-            </p>
-            <h2 className="text-3xl font-bold text-[#76ABB8]">The Genesis of a Strategic Empire</h2>
-            <p>
-                Founded by Sanjeev Bikhchandani in 1995, Info Edge started as a humble classifieds business. Naukri.com wasn't just a job portal; it was the first brick in what would become a massive digital wall. While most founders were chasing quick exits, Bikhchandani was chasing the "Network Effect."
-            </p>
-            <div className="bg-[#02142C] p-8 rounded-3xl border border-[#76ABB8]/20 italic">
-                "We didn't set out to be a venture capital firm. We set out to build products that solve real Indian problems. The investment arm grew out of a surplus of capital and a surplus of belief in the Indian internet ecosystem."
-            </div>
-            <h2 className="text-3xl font-bold text-[#76ABB8]">The Zomato Bet</h2>
-            <p>
-                In 2010, Info Edge made its most legendary move: a $1 million investment into a fledgling restaurant discovery platform called FoodieBay (later Zomato). At the time, food delivery in India was a fragmented, offline mess. Info Edge saw the potential for a digital aggregator before anyone else. Today, that stake is worth billions, but more importantly, it validated the "Strategic Investor" model in India.
-            </p>
-            <h2 className="text-3xl font-bold text-[#76ABB8]">Why Info Edge Wins</h2>
-            <ul className="list-disc pl-6 space-y-4">
-                <li><strong>Patient Capital:</strong> Unlike traditional VCs with 7-year horizons, Info Edge plays the 20-year game.</li>
-                <li><strong>Deep Domain Expertise:</strong> Having built Naukri, Jeevansathi, and 99acres, they understand the unit economics of marketplaces.</li>
-                <li><strong>Ecosystem Synergy:</strong> Their portfolio companies often find operational efficiencies by working within the same network.</li>
-            </ul>
-            <p>
-                As India moves towards a $5 trillion economy, Info Edge continues to look for the "next big thing" in segments like Legal Tech and EdTech. Their story isn't just about money; it's about the conviction that India's digital transformation is only just beginning.
-            </p>
+      <div className="space-y-8">
+        <p className="text-xl leading-relaxed text-white/90">
+          When you think of the companies that define India's digital economy, brands like Zomato and PolicyBazaar immediately come to mind. But behind these household names lies a quieter, more strategic force: <strong>Info Edge (India) Limited</strong>.
+        </p>
+        <h2 className="text-3xl font-bold text-[#76ABB8]">The Genesis of a Strategic Empire</h2>
+        <p>
+          Founded by Sanjeev Bikhchandani in 1995, Info Edge started as a humble classifieds business. Naukri.com wasn't just a job portal; it was the first brick in what would become a massive digital wall. While most founders were chasing quick exits, Bikhchandani was chasing the "Network Effect."
+        </p>
+        <div className="bg-[#02142C] p-8 rounded-3xl border border-[#76ABB8]/20 italic">
+          "We didn't set out to be a venture capital firm. We set out to build products that solve real Indian problems. The investment arm grew out of a surplus of capital and a surplus of belief in the Indian internet ecosystem."
         </div>
+        <h2 className="text-3xl font-bold text-[#76ABB8]">The Zomato Bet</h2>
+        <p>
+          In 2010, Info Edge made its most legendary move: a $1 million investment into a fledgling restaurant discovery platform called FoodieBay (later Zomato). At the time, food delivery in India was a fragmented, offline mess. Info Edge saw the potential for a digital aggregator before anyone else. Today, that stake is worth billions, but more importantly, it validated the "Strategic Investor" model in India.
+        </p>
+        <h2 className="text-3xl font-bold text-[#76ABB8]">Why Info Edge Wins</h2>
+        <ul className="list-disc pl-6 space-y-4">
+          <li><strong>Patient Capital:</strong> Unlike traditional VCs with 7-year horizons, Info Edge plays the 20-year game.</li>
+          <li><strong>Deep Domain Expertise:</strong> Having built Naukri, Jeevansathi, and 99acres, they understand the unit economics of marketplaces.</li>
+          <li><strong>Ecosystem Synergy:</strong> Their portfolio companies often find operational efficiencies by working within the same network.</li>
+        </ul>
+        <p>
+          As India moves towards a $5 trillion economy, Info Edge continues to look for the "next big thing" in segments like Legal Tech and EdTech. Their story isn't just about money; it's about the conviction that India's digital transformation is only just beginning.
+        </p>
+      </div>
     )
   },
   {
@@ -309,33 +309,33 @@ export const BLOG_POSTS: BlogPost[] = [
     snippet: "As we continue binge-shopping on mobile apps, a silent revolution is happening where online giants are reclaiming the physical retail space...",
     image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=400&auto=format&fit=crop',
     author: {
-        name: "Ankita Saxena",
-        role: "Marketing Strategist",
-        avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&h=400&auto=format&fit=crop"
+      name: "Ankita Saxena",
+      role: "Marketing Strategist",
+      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&h=400&auto=format&fit=crop"
     },
     content: (
-        <div className="space-y-8">
-            <p className="text-xl leading-relaxed text-white/90">
-                The death of physical retail has been greatly exaggerated. Instead of disappearing, physical stores are evolving into high-tech "Experience Centers."
-            </p>
-            <h2 className="text-3xl font-bold text-[#76ABB8]">The Omnichannel Reality</h2>
-            <p>
-                Modern consumers don't think in terms of "online" or "offline." They think in terms of convenience. A customer might see a product on Instagram, research it on a blog (like this one!), and then visit a store to feel the material before finally ordering it via an app for home delivery.
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
-                <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
-                    <h4 className="text-[#76ABB8] font-bold mb-2">Dark Stores</h4>
-                    <p className="text-sm text-white/60">Using retail space as hyper-local fulfillment centers for 10-minute deliveries.</p>
-                </div>
-                <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
-                    <h4 className="text-[#76ABB8] font-bold mb-2">Smart Fitting Rooms</h4>
-                    <p className="text-sm text-white/60">AR-powered mirrors that allow customers to "try on" digital inventories.</p>
-                </div>
-            </div>
-            <p>
-                Companies like Lenskart and Nykaa in India have mastered this transition. By using online data to decide where to open a physical store, they minimize risk and maximize footfall. The "Clicks to Bricks" movement is the ultimate validation of the hybrid business model.
-            </p>
+      <div className="space-y-8">
+        <p className="text-xl leading-relaxed text-white/90">
+          The death of physical retail has been greatly exaggerated. Instead of disappearing, physical stores are evolving into high-tech "Experience Centers."
+        </p>
+        <h2 className="text-3xl font-bold text-[#76ABB8]">The Omnichannel Reality</h2>
+        <p>
+          Modern consumers don't think in terms of "online" or "offline." They think in terms of convenience. A customer might see a product on Instagram, research it on a blog (like this one!), and then visit a store to feel the material before finally ordering it via an app for home delivery.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-10">
+          <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
+            <h4 className="text-[#76ABB8] font-bold mb-2">Dark Stores</h4>
+            <p className="text-sm text-white/60">Using retail space as hyper-local fulfillment centers for 10-minute deliveries.</p>
+          </div>
+          <div className="p-6 bg-white/5 rounded-2xl border border-white/10">
+            <h4 className="text-[#76ABB8] font-bold mb-2">Smart Fitting Rooms</h4>
+            <p className="text-sm text-white/60">AR-powered mirrors that allow customers to "try on" digital inventories.</p>
+          </div>
         </div>
+        <p>
+          Companies like Lenskart and Nykaa in India have mastered this transition. By using online data to decide where to open a physical store, they minimize risk and maximize footfall. The "Clicks to Bricks" movement is the ultimate validation of the hybrid business model.
+        </p>
+      </div>
     )
   },
   {
@@ -347,27 +347,27 @@ export const BLOG_POSTS: BlogPost[] = [
     snippet: "If IndiGo airlines were a college student, they'd be the topper who everyone notices. Let's dive into the operational efficiency that defines them...",
     image: 'https://images.unsplash.com/photo-1436491865332-7a61a109c0f2?q=80&w=400&auto=format&fit=crop',
     author: {
-        name: "Punit G",
-        role: "Ex-VP @ OYO | Growth Expert",
-        avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&h=400&auto=format&fit=crop"
+      name: "Punit G",
+      role: "Ex-VP @ OYO | Growth Expert",
+      avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&h=400&auto=format&fit=crop"
     },
     content: (
-        <div className="space-y-8">
-            <p className="text-xl leading-relaxed text-white/90">
-                In an industry where players like Jet Airways and Kingfisher collapsed under their own weight, IndiGo (InterGlobe Aviation) stands as a titan of operational discipline.
-            </p>
-            <h2 className="text-3xl font-bold text-[#76ABB8]">The Power of One</h2>
-            <p>
-                IndiGo's primary secret is simplicity. By operating almost exclusively with the Airbus A320 family, they achieve massive economies of scale in maintenance, training, and spare parts management. Every minute an aircraft spends on the ground is lost revenue. IndiGo's "Turnaround Time" (TAT) is among the best in the world.
-            </p>
-            <h2 className="text-3xl font-bold text-[#76ABB8]">Scale vs. Sentiment</h2>
-            <p>
-                IndiGo isn't known for luxury; it's known for punctuality. In a market like India, "On Time" is the ultimate luxury. However, rapid expansion comes with massive lease liabilities and debt. We explore how they balance the ledger against rising fuel costs and a weakening rupee.
-            </p>
-            <p>
-                With a market share exceeding 60%, IndiGo is moving from a domestic leader to an international challenger. The question remains: Can their low-cost model survive the long-haul journey?
-            </p>
-        </div>
+      <div className="space-y-8">
+        <p className="text-xl leading-relaxed text-white/90">
+          In an industry where players like Jet Airways and Kingfisher collapsed under their own weight, IndiGo (InterGlobe Aviation) stands as a titan of operational discipline.
+        </p>
+        <h2 className="text-3xl font-bold text-[#76ABB8]">The Power of One</h2>
+        <p>
+          IndiGo's primary secret is simplicity. By operating almost exclusively with the Airbus A320 family, they achieve massive economies of scale in maintenance, training, and spare parts management. Every minute an aircraft spends on the ground is lost revenue. IndiGo's "Turnaround Time" (TAT) is among the best in the world.
+        </p>
+        <h2 className="text-3xl font-bold text-[#76ABB8]">Scale vs. Sentiment</h2>
+        <p>
+          IndiGo isn't known for luxury; it's known for punctuality. In a market like India, "On Time" is the ultimate luxury. However, rapid expansion comes with massive lease liabilities and debt. We explore how they balance the ledger against rising fuel costs and a weakening rupee.
+        </p>
+        <p>
+          With a market share exceeding 60%, IndiGo is moving from a domestic leader to an international challenger. The question remains: Can their low-cost model survive the long-haul journey?
+        </p>
+      </div>
     )
   }
 ];
@@ -379,22 +379,26 @@ export interface Sponsor {
 }
 
 export const SPONSORS: Sponsor[] = [
-  { id: '1', name: 'Notion', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png' },
-  { id: '2', name: 'Finlatics', logo: 'https://media.licdn.com/dms/image/v2/C4D0BAQG5m_YhVbLhRA/company-logo_200_200/company-logo_200_200/0/1630576395988?e=2147483647&v=beta&t=M8-9e6L_u9tP4wO6m9C-N9kYV_5_E-E-E-E' },
-  { id: '3', name: 'Unstop', logo: 'https://d8it4huxumps7.cloudfront.net/uploads/images/63d7a8d5c7c22_unstop_logo_blue.png' },
-  { id: '4', name: 'Internshala', logo: 'https://internshala.com/static/images/common/internshala_logo.png' },
-  { id: '5', name: 'StockGro', logo: 'https://www.stockgro.club/wp-content/uploads/2021/05/StockGro-Logo.png' },
-  { id: '6', name: 'Interview Buddy', logo: 'https://media.licdn.com/dms/image/v2/C510BAQHGj6G_8j6G6g/company-logo_200_200/company-logo_200_200/0/1630656885362?e=2147483647&v=beta&t=I-H-S-T-I-G-E-R' },
-  { id: '7', name: 'Campus Times', logo: 'https://www.campustimespune.com/wp-content/uploads/2015/06/Campus-Times-Pune-Logo-Transparent.png' },
-  { id: '8', name: 'Bluelearn', logo: 'https://media.licdn.com/dms/image/C4D0BAQF_u_5z_5_5_w/company-logo_200_200/0/1626265435967?e=2147483647&v=beta&t=I-H-S-T-I-G-E-R' },
-  { id: '9', name: 'NoticeBard', logo: 'https://media.licdn.com/dms/image/v2/C560BAQF8q8R8W8Qw/company-logo_200_200/company-logo_200_200/0/1630656885362?e=2147483647&v=beta&t=I-H-S-T-I-G-E-R' },
-  { id: '10', name: 'Startup Talky', logo: 'https://startuptalky.com/content/images/2021/04/StartupTalky-Logo-1.png' },
-  { id: '11', name: 'Bazarville', logo: 'https://media.licdn.com/dms/image/v2/C4D0BAQG5m_YhVbLhRA/company-logo_200_200/company-logo_200_200/0/1630576395988?e=2147483647&v=beta&t=M8-9e6L_u9tP4wO6m9C-N9kYV_5_E-E-E-E' },
-  { id: '12', name: 'Yashvi Foundation', logo: 'https://media.licdn.com/dms/image/v2/C4E0BAQHkE1Y6q5_8wA/company-logo_200_200/company-logo_200_200/0/1630656885362?e=2147483647&v=beta&t=I-H-S-T-I-G-E-R' },
-  { id: '13', name: 'Markoknow', logo: 'https://media.licdn.com/dms/image/v2/C560BAQF8q8R8W8Qw/company-logo_200_200/company-logo_200_200/0/1630656885362?e=2147483647&v=beta&t=I-H-S-T-I-G-E-R' },
-  { id: '14', name: 'Stock Edge', logo: 'https://www.stockedge.com/assets/img/logo.png' },
-  { id: '15', name: 'Startup News', logo: 'https://startupnews.fyi/wp-content/uploads/2020/02/SN-Logo.png' },
-  { id: '16', name: 'Blunt', logo: 'https://media.licdn.com/dms/image/v2/C4D0BAQGkKqE8O8W8Qw/company-logo_200_200/company-logo_200_200/0/1630656885362?e=2147483647&v=beta&t=I-H-S-T-I-G-E-R' },
+  { id: 'notion', name: 'Notion', logo: 'https://www.ecellvitbhopal.in/static/media/notion.8761ccab8edd1a37581c.png' },
+  { id: 'unstop', name: 'Unstop', logo: 'https://www.ecellvitbhopal.in/static/media/unstop.8c9edd9eebf2a8b42e2e.png' },
+  { id: 'stockgro', name: 'StockGro', logo: 'https://www.ecellvitbhopal.in/static/media/stockgro.a4249f77451ed85dbdfc.png' },
+  { id: 'internshala', name: 'Internshala', logo: 'https://www.ecellvitbhopal.in/static/media/internshala.00cd7863d10452e04c4b.png' },
+  { id: 'finlatics', name: 'Finlatics', logo: 'https://www.ecellvitbhopal.in/static/media/finlatics.0030217336da81971731.png' },
+  { id: 'stockedge', name: 'Stock Edge', logo: 'https://www.ecellvitbhopal.in/static/media/stockedge.923700db773ddc86c7ff.png' },
+  { id: 'startup-talky', name: 'Startup Talky', logo: 'https://www.ecellvitbhopal.in/static/media/startuptalky.f4cf1955980a5d1939fb.png' },
+  { id: 'noticebard', name: 'NoticeBard', logo: 'https://www.ecellvitbhopal.in/static/media/noticebard.6003f56d3071c9601c0f.png' },
+  { id: 'campus-times', name: 'Campus Times', logo: 'https://www.ecellvitbhopal.in/static/media/campustimes.d423746374cf180dde0e.png' },
+  { id: 'interview-buddy', name: 'Interview Buddy', logo: 'https://www.ecellvitbhopal.in/static/media/interviewbuddy.4d4e892061df491526b5.png' },
+  { id: 'bluelearn', name: 'Bluelearn', logo: 'https://www.ecellvitbhopal.in/static/media/bluelearn.e882eaae35b882e623d9.png' },
+  { id: 'blunt', name: 'Blunt', logo: 'https://www.ecellvitbhopal.in/static/media/blunt.49bc606940a0be733d2e.png' },
+  { id: 'vold', name: 'Vold', logo: 'https://www.ecellvitbhopal.in/static/media/vold.c49aa762cb8db4ec1f39.png' },
+  { id: 'bazarville', name: 'Bazarville', logo: 'https://www.ecellvitbhopal.in/static/media/bazarville.1c059c470873dc125e4f.png' },
+  { id: 'startup-news', name: 'Startup News', logo: 'https://www.ecellvitbhopal.in/static/media/startupnews.f60a65203b6fdd67c5ec.png' },
+  { id: 'travelyatri', name: 'Travel Yatri', logo: 'https://www.ecellvitbhopal.in/static/media/travelyatri.3ee90c49efbcf3035ff2.png' },
+  { id: 'markonow', name: 'Markonow', logo: 'https://www.ecellvitbhopal.in/static/media/markonow.16e35111f9c806b8dd64.png' },
+  { id: 'givemycertificate', name: 'Give My Certificate', logo: 'https://www.ecellvitbhopal.in/static/media/GIVEMYCERTIFICATE.eabd6bc60033a2780ff4.png' },
+  { id: 'toponepercent', name: 'Top One Percent', logo: 'https://www.ecellvitbhopal.in/static/media/toponepercent.96f5809b6ea0e895ffa0.png' },
+  { id: 'yashahvi', name: 'Yashahvi', logo: 'https://www.ecellvitbhopal.in/static/media/yashahvi.142733900ce9d90b2855.png' },
 ];
 
 export const STATS = [

@@ -3,7 +3,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <meta name="theme-color" content="#02142C" />
+    <meta name="mobile-web-app-capable" content="yes" />
     <title>E-Cell VIT Bhopal</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,18 +45,6 @@
         border-radius: 10px;
       }
 
-      @keyframes scroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(calc(-100% / 2)); }
-      }
-      .animate-infinite-scroll {
-        animation: scroll 60s linear infinite;
-        display: flex;
-        width: max-content;
-      }
-      .animate-infinite-scroll:hover {
-        animation-play-state: paused;
-      }
     </style>
     <script type="importmap">
 {

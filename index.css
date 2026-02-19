@@ -1,0 +1,691 @@
+/* ============================================
+   MOBILE-FIRST RESPONSIVE CSS
+   Production-ready mobile-first design system
+   ============================================ */
+
+/* ============================================
+   ROOT VARIABLES & FLUID TYPOGRAPHY
+   ============================================ */
+:root {
+  /* Color Palette */
+  --color-primary: #76ABB8;
+  --color-primary-dark: #26658C;
+  --color-primary-light: #54ACBF;
+  --color-accent: #A7EBF2;
+  --color-bg-dark: #02142C;
+  --color-bg-black: #000000;
+
+  /* Spacing Scale (Mobile-First) */
+  --spacing-xs: clamp(0.25rem, 1vw, 0.75rem);
+  --spacing-sm: clamp(0.5rem, 1.5vw, 1rem);
+  --spacing-md: clamp(0.75rem, 2vw, 1.5rem);
+  --spacing-lg: clamp(1rem, 3vw, 2.5rem);
+  --spacing-xl: clamp(1.5rem, 4vw, 4rem);
+  --spacing-2xl: clamp(2rem, 6vw, 6rem);
+
+  /* Typography Scale (Fluid) */
+  --font-size-xs: clamp(0.6rem, 0.5vw + 0.5rem, 0.75rem);
+  --font-size-sm: clamp(0.7rem, 0.75vw + 0.5rem, 0.875rem);
+  --font-size-base: clamp(0.8rem, 1vw + 0.5rem, 1rem);
+  --font-size-lg: clamp(0.9rem, 1.25vw + 0.5rem, 1.125rem);
+  --font-size-xl: clamp(1rem, 1.5vw + 0.5rem, 1.25rem);
+  --font-size-2xl: clamp(1.1rem, 2vw + 0.5rem, 1.5rem);
+  --font-size-3xl: clamp(1.3rem, 3vw + 0.5rem, 2rem);
+  --font-size-4xl: clamp(1.6rem, 4vw + 0.5rem, 3rem);
+  --font-size-5xl: clamp(2rem, 5vw + 0.5rem, 4rem);
+  --font-size-6xl: clamp(2.5rem, 6vw + 0.5rem, 5rem);
+  --font-size-7xl: clamp(3rem, 7vw + 0.5rem, 6rem);
+  --font-size-8xl: clamp(3.5rem, 8vw + 0.5rem, 7rem);
+
+  /* Touch Target Sizes (Minimum 44x44px for accessibility) */
+  --touch-target-min: 44px;
+  --touch-target-comfortable: 48px;
+
+  /* Container Max Widths */
+  --container-sm: 100%;
+  --container-md: 100%;
+  --container-lg: 1200px;
+  --container-xl: 1400px;
+
+  /* Border Radius */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
+  --radius-2xl: 2.5rem;
+  --radius-3xl: 3rem;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+}
+
+/* ============================================
+   BASE STYLES & RESET
+   ============================================ */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   RESPONSIVE UTILITY CLASSES
+   ============================================ */
+
+/* Container */
+.container-responsive {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
+}
+
+@media (min-width: 640px) {
+  .container-responsive {
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-responsive {
+    max-width: var(--container-lg);
+    padding-left: var(--spacing-xl);
+    padding-right: var(--spacing-xl);
+  }
+}
+
+@media (min-width: 1280px) {
+  .container-responsive {
+    max-width: var(--container-xl);
+  }
+}
+
+/* Fluid Typography Classes */
+.text-fluid-xs {
+  font-size: var(--font-size-xs);
+}
+
+.text-fluid-sm {
+  font-size: var(--font-size-sm);
+}
+
+.text-fluid-base {
+  font-size: var(--font-size-base);
+}
+
+.text-fluid-lg {
+  font-size: var(--font-size-lg);
+}
+
+.text-fluid-xl {
+  font-size: var(--font-size-xl);
+}
+
+.text-fluid-2xl {
+  font-size: var(--font-size-2xl);
+}
+
+.text-fluid-3xl {
+  font-size: var(--font-size-3xl);
+}
+
+.text-fluid-4xl {
+  font-size: var(--font-size-4xl);
+}
+
+.text-fluid-5xl {
+  font-size: var(--font-size-5xl);
+}
+
+.text-fluid-6xl {
+  font-size: var(--font-size-6xl);
+}
+
+.text-fluid-7xl {
+  font-size: var(--font-size-7xl);
+}
+
+.text-fluid-8xl {
+  font-size: var(--font-size-8xl);
+}
+
+/* Touch-Friendly Buttons */
+.btn-touch {
+  min-height: var(--touch-target-comfortable);
+  min-width: var(--touch-target-comfortable);
+  padding: var(--spacing-sm) var(--spacing-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 768px) {
+  .btn-touch {
+    min-height: auto;
+    min-width: auto;
+  }
+}
+
+/* ============================================
+   MOBILE MENU STYLES
+   ============================================ */
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.95);
+  backdrop-filter: blur(20px);
+  z-index: 150;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-base), visibility var(--transition-base);
+}
+
+.mobile-menu-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu-content {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(85vw, 320px);
+  height: 100vh;
+  background: rgba(2, 20, 44, 0.98);
+  backdrop-filter: blur(20px);
+  padding: var(--spacing-2xl) var(--spacing-lg);
+  transform: translateX(100%);
+  transition: transform var(--transition-base);
+  overflow-y: auto;
+  z-index: 151;
+}
+
+.mobile-menu-overlay.active .mobile-menu-content {
+  transform: translateX(0);
+}
+
+.mobile-menu-item {
+  display: block;
+  padding: var(--spacing-md) 0;
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: color var(--transition-base);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.mobile-menu-item:hover,
+.mobile-menu-item.active {
+  color: var(--color-primary);
+}
+
+.mobile-menu-close {
+  position: absolute;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+  width: var(--touch-target-comfortable);
+  height: var(--touch-target-comfortable);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background var(--transition-base);
+}
+
+.mobile-menu-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ============================================
+   RESPONSIVE GRID SYSTEMS
+   ============================================ */
+.grid-responsive {
+  display: grid;
+  gap: var(--spacing-md);
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .grid-responsive-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-responsive-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   RESPONSIVE CARDS
+   ============================================ */
+.card-responsive {
+  width: 100%;
+  max-width: 100%;
+  padding: var(--spacing-lg);
+}
+
+@media (min-width: 640px) {
+  .card-responsive {
+    padding: var(--spacing-xl);
+  }
+}
+
+/* ============================================
+   RESPONSIVE SPACING UTILITIES
+   ============================================ */
+.p-responsive {
+  padding: var(--spacing-md);
+}
+
+@media (min-width: 640px) {
+  .p-responsive {
+    padding: var(--spacing-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .p-responsive {
+    padding: var(--spacing-xl);
+  }
+}
+
+.py-responsive {
+  padding-top: var(--spacing-xl);
+  padding-bottom: var(--spacing-xl);
+}
+
+@media (min-width: 640px) {
+  .py-responsive {
+    padding-top: var(--spacing-2xl);
+    padding-bottom: var(--spacing-2xl);
+  }
+}
+
+.px-responsive {
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
+}
+
+@media (min-width: 640px) {
+  .px-responsive {
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .px-responsive {
+    padding-left: var(--spacing-xl);
+    padding-right: var(--spacing-xl);
+  }
+}
+
+/* ============================================
+   HORIZONTAL SCROLL CONTAINERS (Mobile Optimized)
+   ============================================ */
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) 0;
+  padding-left: var(--spacing-md);
+  padding-right: var(--spacing-md);
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.horizontal-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.horizontal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+}
+
+.horizontal-scroll-item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  width: min(85vw, 320px);
+}
+
+@media (min-width: 640px) {
+  .horizontal-scroll-item {
+    width: min(400px, 50vw);
+  }
+}
+
+@media (min-width: 1024px) {
+  .horizontal-scroll-item {
+    width: auto;
+  }
+}
+
+/* ============================================
+   FORM ELEMENTS (Mobile Optimized)
+   ============================================ */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+  width: 100%;
+  min-height: var(--touch-target-comfortable);
+  padding: var(--spacing-md) var(--spacing-lg);
+  font-size: var(--font-size-base);
+  border-radius: var(--radius-xl);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* ============================================
+   NAVBAR MOBILE OPTIMIZATION
+   ============================================ */
+@media (max-width: 767px) {
+  nav {
+    top: var(--spacing-sm) !important;
+    padding-left: var(--spacing-sm) !important;
+    padding-right: var(--spacing-sm) !important;
+  }
+
+  nav .rounded-full {
+    height: auto !important;
+    min-height: 50px;
+    padding: 0 var(--spacing-md) !important;
+  }
+}
+
+/* ============================================
+   HERO SECTION MOBILE OPTIMIZATION
+   ============================================ */
+@media (max-width: 767px) {
+  section[id="home"] {
+    min-height: 100vh;
+    min-height: 100dvh;
+    /* Dynamic viewport height for mobile */
+    padding-top: calc(80px + var(--spacing-xl));
+    padding-bottom: var(--spacing-xl);
+  }
+
+  section[id="home"] h1 {
+    font-size: clamp(2rem, 8vw, 3rem) !important;
+    line-height: 1.1 !important;
+    margin-bottom: var(--spacing-lg) !important;
+  }
+
+  section[id="home"] p {
+    font-size: var(--font-size-base) !important;
+    margin-bottom: var(--spacing-xl) !important;
+  }
+
+  section[id="home"] button {
+    width: 100%;
+    max-width: 100%;
+    padding: var(--spacing-md) var(--spacing-xl) !important;
+    font-size: var(--font-size-base) !important;
+  }
+}
+
+/* ============================================
+   SECTION SPACING (Mobile Optimized)
+   ============================================ */
+section {
+  padding-top: var(--spacing-2xl);
+  padding-bottom: var(--spacing-2xl);
+}
+
+@media (min-width: 768px) {
+  section {
+    padding-top: clamp(4rem, 8vw, 8rem);
+    padding-bottom: clamp(4rem, 8vw, 8rem);
+  }
+}
+
+/* ============================================
+   HEADING RESPONSIVE SIZES
+   ============================================ */
+h1,
+.h1 {
+  font-size: clamp(2rem, 6vw, 4rem);
+  line-height: 1.1;
+}
+
+h2,
+.h2 {
+  font-size: clamp(1.75rem, 5vw, 3.5rem);
+  line-height: 1.2;
+}
+
+h3,
+.h3 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  line-height: 1.3;
+}
+
+h4,
+.h4 {
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  line-height: 1.4;
+}
+
+/* ============================================
+   UTILITY: HIDE ON MOBILE
+   ============================================ */
+.hide-mobile {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hide-mobile {
+    display: block;
+  }
+}
+
+.show-mobile {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .show-mobile {
+    display: none;
+  }
+}
+
+/* ============================================
+   UTILITY: FLEX RESPONSIVE
+   ============================================ */
+.flex-responsive {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .flex-responsive {
+    flex-direction: row;
+    gap: var(--spacing-lg);
+  }
+}
+
+/* ============================================
+   SMOOTH SCROLLING
+   ============================================ */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ============================================
+   TOUCH OPTIMIZATION
+   ============================================ */
+* {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  touch-action: manipulation;
+}
+
+/* Improve scrolling performance on mobile */
+@media (max-width: 768px) {
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ============================================
+   FOCUS VISIBLE (Accessibility)
+   ============================================ */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   UTILITY: NO SCROLLBAR
+   ============================================ */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ============================================
+   ANIMATIONS: PREMIUM & SLOW
+   ============================================ */
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.6;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes slide-up-premium {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-reverse {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee var(--duration, 40s) linear infinite;
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse var(--duration, 40s) linear infinite;
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.pause-on-hover:hover .animate-marquee,
+.pause-on-hover:hover .animate-marquee-reverse {
+  animation-play-state: paused;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 12s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  will-change: transform, opacity;
+}
+
+.animate-slide-up-premium {
+  animation: slide-up-premium 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+  * {
+    background: white !important;
+    color: black !important;
+  }
+}

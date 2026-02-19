@@ -127,7 +127,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#02142C] text-white selection:bg-[#76ABB8] selection:text-white">
+    <div className="min-h-screen bg-[#02142C] text-white selection:bg-[#76ABB8] selection:text-white overflow-x-hidden">
       {/* Background radial gradient decoration */}
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] overflow-hidden transform-gpu">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#26658C]/10 rounded-full blur-[120px] will-change-transform"></div>
