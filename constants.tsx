@@ -96,6 +96,7 @@ export interface SpeakerItem {
   name: string;
   title: string;
   image: string;
+  linkedin: string;
 }
 
 export const SPEAKERS: SpeakerItem[] = [
@@ -104,48 +105,56 @@ export const SPEAKERS: SpeakerItem[] = [
     name: 'Srijan Mehrotra',
     title: 'AI Engineer | Building Model Verse | Gen AI Developer',
     image: 'https://media.licdn.com/dms/image/v2/D4D03AQGsK4G3P5f_6g/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1715494294025?e=1746057600&v=beta&t=xH3yE5KxYvD_pE_I4-z1Y-f_I3J_f_I3J_f_I3J_f_I3J',
+    linkedin: '#',
   },
   {
     id: 'abhay-yadav',
     name: 'Dr. Abhay Yadav',
     title: 'Co-Founder & CEO, Bhopal Angels | Angel Investor',
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=400&h=400&auto=format&fit=crop',
+    linkedin: '#',
   },
   {
     id: 'ankita-saxena',
     name: 'Ankita Saxena',
     title: "Marketing Champion | Communication | Ex-Walmart | Ex- Spencer's",
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&h=400&auto=format&fit=crop',
+    linkedin: '#',
   },
   {
     id: 'devesh-bochre',
     name: 'Devesh Bochre',
     title: 'Founder Void Energy asia pvt. ltd. (Shark Tank India S3)',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400&h=400&auto=format&fit=crop',
+    linkedin: '#',
   },
   {
     id: 'kaif-khan',
     name: 'Kaif Khan',
     title: 'Stand Up Comedian',
     image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=400&h=400&auto=format&fit=crop',
+    linkedin: '#',
   },
   {
     id: 'mitresh-sharma',
     name: 'Mitresh Sharma',
     title: 'Founder, First Bud Organics (Shark Tank India S3) | Food & Agribusiness',
     image: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=400&h=400&auto=format&fit=crop',
+    linkedin: '#',
   },
   {
     id: 'punit-g',
     name: 'Punit G',
     title: 'CEO - ArthNirmiti | CXO - Choice International Ltd | Ex-VP @ OYO | TEDx Speaker | IIM-A Alumnus',
     image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=400&h=400&auto=format&fit=crop',
+    linkedin: '#',
   },
   {
     id: 'rakhi-pal',
     name: 'Rakhi Pal',
     title: "Co-Founder at EventBeep - India's Largest Student Community | TEDx | Shark Tank India",
     image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&h=400&auto=format&fit=crop',
+    linkedin: '#',
   },
 ];
 
@@ -250,9 +259,12 @@ export interface BlogPost {
     name: string;
     role: string;
     avatar: string;
+    email?: string;
   };
   content: React.ReactNode;
   layout?: 'image-first' | 'text-first';
+  status?: 'pending' | 'approved' | 'rejected';
+  submittedAt?: string;
 }
 
 export const BLOG_CATEGORIES = [

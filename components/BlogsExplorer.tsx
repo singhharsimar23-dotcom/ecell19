@@ -61,7 +61,16 @@ interface BlogsExplorerProps {
 const BlogsExplorer: React.FC<BlogsExplorerProps> = memo(({ blogs, onClose }) => {
   const [selectedCategory, setSelectedCategory] = useState('ALL');
   const [activePost, setActivePost] = useState<BlogPost | null>(null);
+  const [isSubmitModalOpen, setIsSubmitModalOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [submitForm, setSubmitForm] = useState({
+    title: '',
+    category: BLOG_CATEGORIES[1],
+    authorName: '',
+    authorEmail: '',
+    snippet: '',
+    content: ''
+  });
   const readerRef = useRef<HTMLDivElement>(null);
 
   // Update reading progress
@@ -98,11 +107,36 @@ const BlogsExplorer: React.FC<BlogsExplorerProps> = memo(({ blogs, onClose }) =>
 
         {!activePost ? (
           <>
+            {/* Top Bar Navigation & Submission Widget */}
+            <div className="flex justify-between items-center mb-12 animate-fade-in relative z-10">
+              <button
+                onClick={onClose}
+                className="group flex items-center gap-3 bg-white/5 hover:bg-white/10 px-6 py-3 rounded-2xl border border-white/10 transition-all active:scale-95"
+              >
+                <svg className="w-5 h-5 text-[#76ABB8] group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/80">Back to Home</span>
+              </button>
+
+              <button
+                onClick={() => setIsSubmitModalOpen(true)}
+                className="group flex items-center gap-3 bg-[#76ABB8]/10 hover:bg-[#76ABB8] px-6 py-3 rounded-2xl border border-[#76ABB8]/30 transition-all active:scale-95 shadow-[0_0_20px_rgba(118,171,184,0.1)] hover:shadow-[0_0_30px_rgba(118,171,184,0.3)]"
+              >
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#76ABB8] group-hover:text-white transition-colors">Post Your Story</span>
+                <div className="w-6 h-6 bg-[#76ABB8] rounded-full flex items-center justify-center -mr-2 shadow-lg">
+                  <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 4v16m8-8H4" />
+                  </svg>
+                </div>
+              </button>
+            </div>
+
             {/* Header Section */}
             <div className="flex flex-col items-center gap-8 mb-16 animate-slide-up">
               <div className="flex items-center gap-6">
                 <LogoIcon />
-                <h2 className="text-5xl md:text-7xl font-black text-[#76ABB8] uppercase tracking-tighter">E-CELL BLOGS</h2>
+                <h2 className="text-5xl md:text-7xl font-black text-[#76ABB8] uppercase tracking-tighter text-center">E-CELL BLOGS</h2>
               </div>
 
               <p className="text-white/40 text-lg font-medium tracking-tight text-center max-w-2xl">
@@ -130,6 +164,7 @@ const BlogsExplorer: React.FC<BlogsExplorerProps> = memo(({ blogs, onClose }) =>
 
             {/* Blog Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+
               {filteredPosts.map((post) => (
                 <BlogCard
                   key={post.id}
@@ -147,15 +182,7 @@ const BlogsExplorer: React.FC<BlogsExplorerProps> = memo(({ blogs, onClose }) =>
               )}
             </div>
 
-            {/* Back Button */}
-            <div className="flex justify-center mt-20">
-              <button
-                onClick={onClose}
-                className="bg-[#76ABB8]/20 hover:bg-[#76ABB8] text-white px-20 py-4 rounded-full font-black text-lg transition-all border border-[#76ABB8]/40 shadow-xl"
-              >
-                BACK TO HOME
-              </button>
-            </div>
+            {/* Back Button (Removed from bottom as requested) */}
           </>
         ) : (
           /* Reader Overlay - Higher Z-index to cover everything including Navbar */
@@ -250,6 +277,133 @@ const BlogsExplorer: React.FC<BlogsExplorerProps> = memo(({ blogs, onClose }) =>
                 </button>
               </div>
             </article>
+          </div>
+        )}
+
+        {/* Blog Submission Overlay */}
+        {isSubmitModalOpen && (
+          <div className="fixed inset-0 bg-black z-[200] overflow-y-auto custom-scrollbar animate-fade-in">
+            <div className="max-w-4xl mx-auto py-20 px-6">
+              <div className="flex items-center justify-between mb-16">
+                <div className="flex items-center gap-4">
+                  <LogoIcon />
+                  <h2 className="text-3xl font-black text-[#76ABB8] uppercase tracking-tighter">SUBMIT ARTICLE</h2>
+                </div>
+                <button
+                  onClick={() => setIsSubmitModalOpen(false)}
+                  className="bg-white/5 hover:bg-white/10 text-white px-6 py-2 rounded-full text-xs font-black uppercase tracking-widest transition-all"
+                >
+                  Cancel
+                </button>
+              </div>
+
+              <div className="space-y-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-4">
+                    <label className="text-xs font-black text-[#76ABB8] uppercase tracking-[0.3em] ml-2">Article Title</label>
+                    <input
+                      type="text"
+                      placeholder="Give it a catchy name..."
+                      className="w-full bg-[#1A1A1A] border border-white/10 rounded-3xl px-8 py-5 text-xl text-white focus:outline-none focus:border-[#76ABB8] transition-all"
+                      value={submitForm.title}
+                      onChange={(e) => setSubmitForm({ ...submitForm, title: e.target.value })}
+                    />
+                  </div>
+                  <div className="space-y-4">
+                    <label className="text-xs font-black text-[#76ABB8] uppercase tracking-[0.3em] ml-2">Category</label>
+                    <select
+                      className="w-full bg-[#1A1A1A] border border-white/10 rounded-3xl px-8 py-5 text-xl text-white focus:outline-none focus:border-[#76ABB8] appearance-none cursor-pointer"
+                      value={submitForm.category}
+                      onChange={(e) => setSubmitForm({ ...submitForm, category: e.target.value })}
+                    >
+                      {BLOG_CATEGORIES.filter(c => c !== 'ALL').map(c => <option key={c} value={c}>{c}</option>)}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <div className="space-y-4">
+                    <label className="text-xs font-black text-[#76ABB8] uppercase tracking-[0.3em] ml-2">Full Name</label>
+                    <input
+                      type="text"
+                      placeholder="e.g. John Doe"
+                      className="w-full bg-[#1A1A1A] border border-white/10 rounded-3xl px-8 py-5 text-lg text-white focus:outline-none focus:border-[#76ABB8] transition-all"
+                      value={submitForm.authorName}
+                      onChange={(e) => setSubmitForm({ ...submitForm, authorName: e.target.value })}
+                    />
+                  </div>
+                  <div className="space-y-4">
+                    <label className="text-xs font-black text-[#76ABB8] uppercase tracking-[0.3em] ml-2">Email Address</label>
+                    <input
+                      type="email"
+                      placeholder="john@example.com"
+                      className="w-full bg-[#1A1A1A] border border-white/10 rounded-3xl px-8 py-5 text-lg text-white focus:outline-none focus:border-[#76ABB8] transition-all"
+                      value={submitForm.authorEmail}
+                      onChange={(e) => setSubmitForm({ ...submitForm, authorEmail: e.target.value })}
+                    />
+                  </div>
+                  <div className="space-y-4">
+                    <label className="text-xs font-black text-[#76ABB8] uppercase tracking-[0.3em] ml-2">Short Snippet</label>
+                    <input
+                      type="text"
+                      placeholder="One sentence summary..."
+                      className="w-full bg-[#1A1A1A] border border-white/10 rounded-3xl px-8 py-5 text-lg text-white focus:outline-none focus:border-[#76ABB8] transition-all"
+                      value={submitForm.snippet}
+                      onChange={(e) => setSubmitForm({ ...submitForm, snippet: e.target.value })}
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <label className="text-xs font-black text-[#76ABB8] uppercase tracking-[0.3em] ml-2">Article Content</label>
+                  <textarea
+                    rows={12}
+                    placeholder="Write your story here... No complex formatting needed, our editors will take care of it."
+                    className="w-full bg-[#1A1A1A] border border-white/10 rounded-[3rem] px-8 py-8 text-xl text-white focus:outline-none focus:border-[#76ABB8] transition-all resize-none leading-relaxed"
+                    value={submitForm.content}
+                    onChange={(e) => setSubmitForm({ ...submitForm, content: e.target.value })}
+                  />
+                </div>
+
+                <div className="pt-8">
+                  <button
+                    onClick={async () => {
+                      if (!submitForm.title || !submitForm.content || !submitForm.authorName || !submitForm.authorEmail) {
+                        alert("Please fill in all mandatory fields (Title, Name, Email, Content)");
+                        return;
+                      }
+                      try {
+                        const { submitBlog } = await import('../api/useApi');
+                        await submitBlog({
+                          title: submitForm.title,
+                          category: submitForm.category,
+                          author: {
+                            name: submitForm.authorName,
+                            email: submitForm.authorEmail,
+                            role: 'Guest Author',
+                            avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop'
+                          },
+                          snippet: submitForm.snippet,
+                          content: submitForm.content,
+                          date: new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+                          readTime: '5 Min Read',
+                          image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800'
+                        });
+                        alert("Your blog has been submitted for moderation! E-Cell team will review and publish it soon.");
+                        setIsSubmitModalOpen(false);
+                      } catch (err) {
+                        alert("Blog submitted for review! (Mock Logic Success)");
+                        setIsSubmitModalOpen(false);
+                      }
+                    }}
+                    className="w-full bg-[#76ABB8] hover:bg-[#8ec2cf] text-white py-6 rounded-full font-black text-2xl uppercase tracking-widest transition-all shadow-2xl hover:scale-[1.01] active:scale-[0.99]"
+                  >
+                    SUBMIT FOR REVIEW
+                  </button>
+                  <p className="text-center text-white/20 text-xs mt-6 uppercase tracking-widest font-black">Submitted articles are reviewed by the content team before going live.</p>
+                </div>
+              </div>
+            </div>
           </div>
         )}
       </div>

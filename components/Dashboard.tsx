@@ -135,8 +135,9 @@ const Dashboard: React.FC<DashboardProps> = memo(({
   blogs, setBlogs,
   onLogout, onClose
 }) => {
-  const [activeTab, setActiveTab] = useState<'members' | 'events' | 'blogs'>('members');
+  const [activeTab, setActiveTab] = useState<'members' | 'events' | 'blogs' | 'moderation'>('members');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [pendingBlogs, setPendingBlogs] = useState<BlogPost[]>([]);
 
   // --- Member State ---
   const [isMemberModalOpen, setIsMemberModalOpen] = useState(false);
@@ -155,6 +156,44 @@ const Dashboard: React.FC<DashboardProps> = memo(({
   const [blogForm, setBlogForm] = useState<Partial<BlogPost> & { authorName?: string }>({});
 
   // === HANDLERS ===
+
+  // Moderation
+  useEffect(() => {
+    const loadPending = async () => {
+      try {
+        const { fetchPendingBlogs } = await import('../api/useApi');
+        const data = await fetchPendingBlogs();
+        setPendingBlogs(data);
+      } catch (err) {
+        console.error("Failed to load pending blogs:", err);
+      }
+    };
+    if (activeTab === 'moderation') loadPending();
+  }, [activeTab]);
+
+  const handleApproveBlog = async (id: string) => {
+    try {
+      const { approveBlog } = await import('../api/useApi');
+      await approveBlog(id);
+      const approvedBlog = pendingBlogs.find(b => b.id === id);
+      if (approvedBlog) {
+        setBlogs(prev => [...prev, { ...approvedBlog, status: 'approved' }]);
+        setPendingBlogs(prev => prev.filter(b => b.id !== id));
+      }
+    } catch (err) {
+      alert(err instanceof Error ? err.message : 'Approval failed');
+    }
+  };
+
+  const handleRejectBlog = async (id: string) => {
+    try {
+      const { rejectBlog } = await import('../api/useApi');
+      await rejectBlog(id);
+      setPendingBlogs(prev => prev.filter(b => b.id !== id));
+    } catch (err) {
+      alert(err instanceof Error ? err.message : 'Rejection failed');
+    }
+  };
 
   // Members
   const openAddMember = (category: string) => {
@@ -181,7 +220,7 @@ const Dashboard: React.FC<DashboardProps> = memo(({
         role: memberForm.role!,
         category: memberForm.category!,
         image: memberForm.image || 'https://ui-avatars.com/api/?background=random',
-        linkedin: '#'
+        linkedin: memberForm.linkedin || '#'
       };
       setMembers(prev => [...prev, newMember]);
     }
@@ -335,6 +374,7 @@ const Dashboard: React.FC<DashboardProps> = memo(({
               { id: 'members', label: 'Team' },
               { id: 'events', label: 'Events' },
               { id: 'blogs', label: 'Blogs' },
+              { id: 'moderation', label: 'Moderation' },
             ].map((tab) => (
               <button
                 key={tab.id}
@@ -423,6 +463,7 @@ const Dashboard: React.FC<DashboardProps> = memo(({
             { id: 'members', label: 'Members', icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z' },
             { id: 'events', label: 'Events', icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' },
             { id: 'blogs', label: 'Blogs', icon: 'M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2z' },
+            { id: 'moderation', label: 'Moderation', icon: 'M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4' },
           ].map((tab) => (
             <button
               key={tab.id}
@@ -465,6 +506,7 @@ const Dashboard: React.FC<DashboardProps> = memo(({
                 {activeTab === 'members' && 'Team Management'}
                 {activeTab === 'events' && 'Events Curator'}
                 {activeTab === 'blogs' && 'Editorial'}
+                {activeTab === 'moderation' && 'Submission Review'}
               </h1>
               <p className="text-white/60 text-sm sm:text-base md:text-lg font-medium">Create, edit, and manage your content efficiently.</p>
             </div>
@@ -619,6 +661,61 @@ const Dashboard: React.FC<DashboardProps> = memo(({
               </div>
             )}
 
+            {/* === MODERATION TAB === */}
+            {activeTab === 'moderation' && (
+              <div className="space-y-6">
+                {pendingBlogs.length === 0 ? (
+                  <div className="p-12 md:p-20 border-2 border-dashed border-white/10 rounded-[2rem] md:rounded-[3rem] text-center bg-white/5">
+                    <div className="w-16 h-16 md:w-20 md:h-20 bg-white/5 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <svg className="w-8 h-8 md:w-10 md:text-white/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <p className="text-white/40 text-lg md:text-xl font-black uppercase tracking-widest">Inbox Zero</p>
+                    <p className="text-white/20 text-sm font-medium mt-2">No pending blogs to review at the moment.</p>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 gap-6">
+                    {pendingBlogs.map((post) => (
+                      <div key={post.id} className="bg-[#0f172a]/40 backdrop-blur-md border border-white/10 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-8 flex flex-col md:flex-row gap-6 md:gap-8 animate-slide-up">
+                        <div className="w-full md:w-64 h-44 overflow-hidden rounded-2xl md:rounded-3xl border border-white/5 shadow-2xl">
+                          <img src={post.image} className="w-full h-full object-cover" alt="" />
+                        </div>
+                        <div className="flex-grow flex flex-col">
+                          <div className="flex flex-wrap items-center gap-3 mb-4">
+                            <span className="text-[#76ABB8] text-[9px] md:text-[10px] font-black uppercase tracking-widest px-3 py-1 bg-[#76ABB8]/10 rounded-full border border-[#76ABB8]/20">{post.category}</span>
+                            <span className="text-white/30 text-[9px] md:text-[10px] font-bold uppercase tracking-widest">{post.submittedAt || 'Recent Submission'}</span>
+                          </div>
+                          <h3 className="text-xl md:text-2xl font-black text-white mb-2 leading-tight">{post.title}</h3>
+                          <div className="flex items-center gap-3 mb-6 bg-white/5 p-4 rounded-2xl border border-white/5">
+                            <img src={post.author.avatar || 'https://via.placeholder.com/150'} className="w-10 h-10 rounded-full border border-white/10" alt="" />
+                            <div>
+                              <p className="text-white text-xs font-black uppercase tracking-wider">{post.author.name}</p>
+                              <p className="text-[#76ABB8] text-[10px] font-bold">{post.author.email || 'Email not provided'}</p>
+                            </div>
+                          </div>
+                          <div className="mt-auto flex flex-col sm:flex-row gap-4">
+                            <button
+                              onClick={() => handleApproveBlog(post.id)}
+                              className="w-full sm:w-auto bg-[#22c55e] hover:bg-[#16a34a] text-white px-8 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all shadow-lg shadow-[#22c55e]/20 active:scale-95"
+                            >
+                              Approve
+                            </button>
+                            <button
+                              onClick={() => handleRejectBlog(post.id)}
+                              className="w-full sm:w-auto bg-red-500/10 hover:bg-red-500 text-red-500 hover:text-white px-8 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all border border-red-500/20 active:scale-95"
+                            >
+                              Reject
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+
           </div>
         </div>
       </div>
@@ -649,6 +746,15 @@ const Dashboard: React.FC<DashboardProps> = memo(({
                 onChange={e => setMemberForm(prev => ({ ...prev, role: e.target.value }))}
               />
             </div>
+          </div>
+          <div className="space-y-2">
+            <label className="text-[10px] font-black text-[#76ABB8] uppercase tracking-[0.2em] ml-1">LinkedIn Profile URL</label>
+            <input
+              className="w-full bg-[#1A1A1A] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#76ABB8]"
+              placeholder="https://linkedin.com/in/username"
+              value={memberForm.linkedin || ''}
+              onChange={e => setMemberForm(prev => ({ ...prev, linkedin: e.target.value }))}
+            />
           </div>
           <div className="space-y-2">
             <label className="text-[10px] font-black text-[#76ABB8] uppercase tracking-[0.2em] ml-1">Team Category</label>

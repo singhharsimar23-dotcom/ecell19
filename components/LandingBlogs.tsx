@@ -11,12 +11,12 @@ const LandingBlogs: React.FC<LandingBlogsProps> = memo(({ blogs, onMoreClick }) 
   const displayBlogs = blogs.slice(0, 3);
 
   return (
-    <section id="blogs" className="py-32 relative scroll-mt-32">
+    <section id="blogs" className="py-24 sm:py-32 relative scroll-mt-32 bg-black border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 sm:mb-12 md:mb-16 gap-4 sm:gap-6">
           <div className="max-w-2xl w-full">
             <h2 className="text-fluid-3xl md:text-fluid-6xl font-black text-[#76ABB8] uppercase tracking-tighter mb-4 sm:mb-6">
-              Latest Insights
+              E-CELL BLOGS
             </h2>
             <p className="text-white/60 text-sm sm:text-base md:text-lg font-medium leading-relaxed">
               Explore the latest trends, success stories, and entrepreneurial strategies curated by our team.
@@ -35,8 +35,9 @@ const LandingBlogs: React.FC<LandingBlogsProps> = memo(({ blogs, onMoreClick }) 
             <div
               key={blog.id}
               onClick={onMoreClick}
-              className="group bg-[#0f172a] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden border border-white/5 hover:border-[#76ABB8]/40 active:border-[#76ABB8]/60 transition-all duration-300 cursor-pointer flex flex-col h-full touch-manipulation"
+              className="group relative bg-[#0f172a] rounded-[1.5rem] sm:rounded-[2rem] overflow-hidden border border-white/5 hover:border-[#76ABB8]/40 active:border-[#76ABB8]/60 transition-all duration-300 cursor-pointer flex flex-col h-full touch-manipulation"
             >
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-8 bg-[#76ABB8]/10 blur-2xl rounded-full pointer-events-none group-hover:bg-[#76ABB8]/25 transition-all duration-500"></div>
               {blog.layout === 'text-first' ? (
                 <>
                   <div className="p-4 sm:p-6 md:p-8 flex flex-col flex-grow">

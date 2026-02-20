@@ -138,7 +138,43 @@ export async function deleteBlog(id: string): Promise<void> {
 }
 
 // ---------------------------------------------------------------------------
-// 5. CONTACT FORM
+// 5. BLOG MODERATION (Public & Admin)
+// ---------------------------------------------------------------------------
+
+/**
+ * Public endpoint for anyone to submit a blog.
+ * POST /api/blogs/submit
+ */
+export async function submitBlog(blog: Omit<BlogPost, 'id' | 'status' | 'submittedAt'>): Promise<BlogPost> {
+  throw new Error('Endpoint POST /api/blogs/submit not implemented');
+}
+
+/**
+ * ADMIN ONLY: Fetch all pending blogs for review.
+ * GET /api/admin/blogs/pending
+ */
+export async function fetchPendingBlogs(): Promise<BlogPost[]> {
+  return []; // Should return blogs where status === 'pending'
+}
+
+/**
+ * ADMIN ONLY: Approve a blog.
+ * POST /api/admin/blogs/:id/approve
+ */
+export async function approveBlog(id: string): Promise<void> {
+  throw new Error(`Endpoint POST /api/admin/blogs/${id}/approve not implemented`);
+}
+
+/**
+ * ADMIN ONLY: Reject a blog.
+ * POST /api/admin/blogs/:id/reject
+ */
+export async function rejectBlog(id: string): Promise<void> {
+  throw new Error(`Endpoint POST /api/admin/blogs/${id}/reject not implemented`);
+}
+
+// ---------------------------------------------------------------------------
+// 6. CONTACT FORM
 // ---------------------------------------------------------------------------
 
 /**

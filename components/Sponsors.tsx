@@ -3,7 +3,8 @@ import React, { memo } from 'react';
 import { SPONSORS } from '../constants';
 
 const SponsorCard: React.FC<{ name: string; logo: string }> = memo(({ name, logo }) => (
-  <div className="flex-shrink-0 w-28 h-28 sm:w-32 sm:h-32 md:w-48 md:h-48 mx-3 sm:mx-4 md:mx-6 bg-white rounded-[1.2rem] sm:rounded-[1.8rem] md:rounded-[2rem] flex items-center justify-center p-4 sm:p-5 md:p-6 shadow-[0_10px_40px_rgba(255,255,255,0.03)] border border-white/5 transition-all duration-300 hover:scale-110 active:scale-95 hover:shadow-2xl hover:z-20 group touch-manipulation">
+  <div className="flex-shrink-0 w-28 h-28 sm:w-32 sm:h-32 md:w-48 md:h-48 mx-3 sm:mx-4 md:mx-6 bg-white rounded-[1.2rem] sm:rounded-[1.8rem] md:rounded-[2rem] flex items-center justify-center p-4 sm:p-5 md:p-6 shadow-[0_10px_40px_rgba(255,255,255,0.03)] border border-white/5 transition-all duration-300 hover:scale-110 active:scale-95 hover:shadow-2xl hover:z-20 group touch-manipulation relative">
+    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-[60%] h-4 bg-black/10 blur-xl rounded-full pointer-events-none group-hover:bg-black/20 transition-all duration-500"></div>
     <img
       src={logo}
       alt={name}

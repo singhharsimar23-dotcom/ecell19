@@ -6,7 +6,8 @@ const EventCard: React.FC<{ event: EventItem }> = memo(({ event }) => {
   const isImageFirst = event.layout === 'image-first';
 
   return (
-    <div className="flex-shrink-0 w-[80vw] max-w-[380px] sm:w-[340px] md:w-[380px] min-h-[420px] sm:h-[520px] md:h-[550px] mx-3 sm:mx-4 md:mx-6 bg-[#1a1a1a] border border-white/5 rounded-[1.8rem] sm:rounded-[2.2rem] md:rounded-[2.5rem] p-5 sm:p-7 md:p-8 flex flex-col overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-white/10 hover:bg-[#222]">
+    <div className="flex-shrink-0 w-[80vw] max-w-[380px] sm:w-[340px] md:w-[380px] min-h-[420px] sm:h-[520px] md:h-[550px] mx-3 sm:mx-4 md:mx-6 bg-[#1a1a1a] border border-white/5 rounded-[1.8rem] sm:rounded-[2.2rem] md:rounded-[2.5rem] p-5 sm:p-7 md:p-8 flex flex-col overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] transition-all duration-300 hover:border-white/10 hover:bg-[#222] relative group">
+      <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-[80%] h-8 bg-[#347690]/20 blur-2xl rounded-full pointer-events-none group-hover:bg-[#347690]/40 transition-all duration-500"></div>
       {isImageFirst ? (
         <>
           {/* Image Section */}

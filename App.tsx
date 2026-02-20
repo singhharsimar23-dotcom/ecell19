@@ -85,7 +85,7 @@ const App: React.FC = () => {
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    
+
     const sections = Object.keys(sectionMapping);
     sections.forEach(id => {
       const el = document.getElementById(id);
@@ -127,20 +127,20 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#02142C] text-white selection:bg-[#76ABB8] selection:text-white overflow-x-hidden">
+    <div className="min-h-screen bg-black text-white selection:bg-[#76ABB8] selection:text-white overflow-x-hidden">
       {/* Background radial gradient decoration */}
       <div className="fixed top-0 left-0 w-full h-full pointer-events-none z-[-1] overflow-hidden transform-gpu">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#26658C]/10 rounded-full blur-[120px] will-change-transform"></div>
         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#54ACBF]/5 rounded-full blur-[120px] will-change-transform"></div>
       </div>
 
-      <Navbar 
+      <Navbar
         activeItem={activeNavItem}
         onNavigate={handleNavigation}
         onAuthClick={() => isLoggedIn ? switchView('dashboard') : switchView('auth')}
         isLoggedIn={isLoggedIn}
       />
-      
+
       <main>
         {currentView === 'landing' && (
           <div className="will-change-scroll">
@@ -169,7 +169,7 @@ const App: React.FC = () => {
         )}
 
         {currentView === 'dashboard' && (
-          <Dashboard 
+          <Dashboard
             members={members}
             setMembers={setMembers}
             events={events}
