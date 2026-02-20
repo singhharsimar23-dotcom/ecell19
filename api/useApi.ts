@@ -1,18 +1,4 @@
-/**
- * E-CELL VIT BHOPAL - API INTEGRATION CONTRACT (v1.0)
- * ===================================================
- * 
- * TO THE BACKEND DEVELOPER:
- * This file serves as the single source of truth for the frontend-backend connection.
- * Replace the empty implementations below with your fetch/axios logic.
- * 
- * AUTHENTICATION:
- * All 'protected' routes (Dashboard operations) should expect a Bearer Token.
- * 
- * DATA SEEDING:
- * If these functions return an empty array [], the app will fall back to using 
- * the static data in `constants.tsx`.
- */
+
 
 import type { TeamMember, EventItem, BlogPost, Sponsor, SpeakerItem } from '../constants';
 
